@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e6f7ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    background-color: #ffffff;
+    border: 2px solid #007acc;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.main h1 {
+    color: #007acc;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+.su {
+    display: flex;
+    justify-content: center;
+}
+
+.suc {
+    width: 100%;
+}
+
+.suf .ftb {
+    margin-bottom: 20px;
+    text-align: left;
+    padding-right: 30px;
+}
+
+.suf label {
+    color: #004f80;
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.suf input[type="text"],
+.suf input[type="email"],
+.suf input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #b3d9ff;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9fcff;
+    transition: border-color 0.3s ease;
+}
+
+.suf input[type="text"]:focus,
+.suf input[type="email"]:focus,
+.suf input[type="password"]:focus {
+    border-color: #007acc;
+    outline: none;
+    background-color: #ffffff;
+}
+
+.suf button.submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #007acc;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.suf button.submit:hover {
+    background-color: #005f99;
+    transform: translateY(-2px);
+}
+
+.suf button.submit:active {
+    transform: translateY(0);
+}
+
+.loginhere {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.loginhere a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginhere a:hover {
+    text-decoration: underline;
+}

@@ -186,6 +186,10 @@ section{
 
 /* Anisi */
 .main {
+
+    margin-left: 680px;
+    margin-top: 200px;
+    align-items: center;
     background-color: #ffffff;
     border: 2px solid #007acc;
     border-radius: 12px;
@@ -288,4 +292,128 @@ section{
 
 .loginhere a:hover {
     text-decoration: underline;
+}
+
+.contmain {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.cont-form {
+    display: flex;
+    gap: 150px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.div-1hf {
+    flex: 1;
+    max-width: 100%;
+}
+
+.div-1hf iframe {
+    width: 100%;
+    height: 500px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.div-2hf {
+    flex: 1;
+    max-width: 50%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 0; 
+}
+
+.contact-us {
+    margin-top: 0; 
+    padding-top: 0; 
+}
+
+.contact-us h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #007acc;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.contact-us p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.contact-us {
+    height: 500px;
+    
+}
+
+.contact-form .forminp {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #004f80;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    border: 1px solid #ccd6dd;
+    border-radius: 8px;
+    background-color: #f9fcff;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007acc;
+    outline: none;
+    background-color: #ffffff;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 120px;
+}
+
+.contact-form .btnmsg {
+    width: 100%;
+    padding: 14px;
+    background-color: #007acc;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form .btnmsg:hover {
+    background-color: #005f99;
+    transform: translateY(-2px);
+}
+
+.contact-form .btnmsg:active {
+    transform: translateY(0);
 }

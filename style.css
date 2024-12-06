@@ -16,7 +16,7 @@ header{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background: #4a7891;
+    background-color:;
 	padding: 7px;
 	transition: .35s ;
 }
@@ -35,17 +35,17 @@ header{
 }
 .navlist a{
     text-decoration: none;
-	color: #011822;
+	color: #1d4752;
 	font-weight: 600;
 	padding: 10px 25px;
 	font-size: 16px;
 	transition:.3s;
 }
 .navlist a:hover{
-    border-left: 2px solid white;
+    border-left: 2px solid #547780;
     padding-left: 10px;
     margin-right: 20px;
-	color:#ffffff;
+	color:#5d8d99;
     transition: 0.2s;
 }
 .header-icons i{
@@ -64,6 +64,9 @@ section{
 .home{
 	width: 100%;
 	display: flex;
+    background: url(img/background.jpeg);
+    background-position: center;
+    background-size: cover;
 	align-items: center;
 }
 .home-text h1{

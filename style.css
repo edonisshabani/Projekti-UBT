@@ -154,7 +154,7 @@ section{
 }
 .btn:hover{
 	transform: translateY(-5px);
-	background: #143646;
+	background: #0e2630;
 }
 
 /* Style i shfaqjes se produkteve */
@@ -240,6 +240,42 @@ section{
     font-size: 18px;
     color: #333;
     font-weight: 700;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.add-to-cart, .buy-now {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart {
+    background-color: #143646;
+    color: white;
+}
+
+.add-to-cart:hover {
+    background-color: #0e2630;
+}
+.add-to-cart i {
+padding-left: 7px;
+}
+
+.buy-now {
+    background-color: #007bff;
+    color: white;
+}
+
+.buy-now:hover {
+    background-color: #0056b3;
 }
 
 /* Responsive design i shfaqjes se produkteve*/
@@ -351,11 +387,6 @@ section{
 .social-icons a.instagram:hover {
     background: #E1306C;
   }
-  
-.social-icons a.twitter:hover {
-    background: #1DA1F2; 
-  }
-  
   .footer-bottom {
     text-align: center;
     font-size: 14px;
@@ -368,6 +399,15 @@ section{
   .footer-bottom p {
     margin: 0;
   }
+  @media (max-width: 768px) {
+    .footer-container {
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     text-align: center;
+    }
+  }
+  
 /* Anisi */
 .main {
 

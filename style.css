@@ -176,7 +176,7 @@ section{
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1500px;
 }
 
 .product-card {
@@ -192,6 +192,7 @@ section{
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .product-card img {
@@ -407,6 +408,131 @@ padding-left: 7px;
      text-align: center;
     }
   }
+
+
+  /* Stiizimi i faqes se produkteve */
+  
+.container {
+     width: 90%;
+     max-width: 1200px;
+     margin: 150px auto;
+     padding: 20px;
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-images {
+    flex: 1 1 40%;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.thumbnail-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.thumbnail-images img {
+    width: 23%;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.thumbnail-images img:hover, .thumbnail-images img:active {
+    transform: scale(1.1);
+    border-color: #007bff;
+}
+.product-details {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #222;
+}
+.description {
+    margin: 20px 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+}
+
+.button-container button {
+    padding: 15px 20px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.reviews {
+    margin-top: 40px;
+}
+
+.reviews h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.review-item {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.review-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.review-item h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.review-item p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.review-item .rating {
+    margin-top: 10px;
+    color: #f39c12;
+}
+
+.review-item .rating i {
+    font-size: 16px;
+}
   
 /* Anisi */
 .main {

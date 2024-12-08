@@ -11,7 +11,12 @@ window.onscroll = function() {
         header.style.backgroundColor = 'transparent';
     }
 };
-
+function openProductPage(url) {
+    window.location.href = url;
+}
+function changeImage(src) {
+    document.getElementById('mainImage').src = src;
+}
 
 
 // Anisi

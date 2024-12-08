@@ -5,44 +5,43 @@ body {
     background-color: #eff9fd;
     margin: 0;
     padding: 0;
+    width: 100%;
     overflow-x: hidden;
 }
 /* Edonisi */
-header {
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 7px;
-    transition: 0.35s;
+header{
+	width: 100%;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 7px;
+	transition: .35s ;
 }
-
-.logo {
+.logo{
     padding-left: 100px;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #111111;
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	color: #111111;
     text-decoration: none;
 }
 
 .navlist {
     display: flex;
     list-style: none;
-    padding-right: 250px;
 }
 
 .navlist a {
     text-decoration: none;
-    color: #1d4752;
-    font-weight: 600;
-    padding: 10px 25px;
-    font-size: 16px;
-    transition: 0.3s;
+	color: #1d4752;
+	font-weight: 600;
+	padding: 10px 25px;
+	font-size: 16px;
+	transition:.3s;
 }
 
 .navlist a:hover {
@@ -52,93 +51,60 @@ header {
     color: #5d8d99;
     transition: 0.2s;
 }
-
-.mob-menu {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: #111111;
-    cursor: pointer;
-    padding-right: 20px;
+.header-icons i{
+	font-size: 32px;
+	color: #111111;
+	margin-right: 20px;
+    transition:.3s; 
 }
-@media screen and (max-width: 768px) {
-.navlist {
-     flex-direction: column;
-     position: fixed;
-     top: 0;
-     right: -100%;
-     width: 70%;
-     height: 100%;
-     background-color: #f8f9fa;
-     box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
-     padding: 50px 20px;
-     gap: 20px;
-     display: flex;
-     align-items: start;
-     justify-content: flex-start;
-     transition: right 0.3s ease-in-out;
-    }
-
-.navlist.show {
-     right: 0;
-    }
-
-.mob-menu {
-    
-     display: block;
-     background: none;
-     border: none;
-     margin-right: 120px;
-     font-size: 28px;
-     color: #111;
-     cursor: pointer;
-     padding-right: 20px;
-     position: fixed;
-     top: 15px;
-     right: 20px;
-     z-index: 1001;
-    }
+.header-icons i:hover{
+	color:#143646;
 }
+
 section{
 	padding: 100px 14%;
 }
-.home{
-	width: 100%;
-	display: flex;
+
+.home {
+    width: 100%;
+    display: flex;
     background: url(img/background.jpeg);
     background-position: center;
     background-size: cover;
-	align-items: center;
+    align-items: center;
 }
-.home-text h1{
-	font-size: 72px;
-	font-weight: 800;
-	line-height: 1.2;
-	letter-spacing: .6rem;
-	margin-bottom: 1.4rem;
+
+.home-text h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .6rem;
+    margin-bottom: 1.4rem;
 }
-.home-text p{
-	font-size: 16px;
-	font-weight: 500;
-	margin-bottom: 30px;
-	letter-spacing: 3px;
+
+.home-text p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
 }
-.btn{
-	display: inline-block;
-	padding: 13px 25px;
-	background:#143646;
-	color: #ffffff;
-	font-size: 15px;
-	letter-spacing: 1px;
-	font-weight: 600;
-	border-radius: 5px;
-	transition:.3s;
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #143646;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: .3s;
     text-decoration: none;
 }
-.btn:hover{
-	transform: translateY(-5px);
-	background: #0f2b36;
+
+.btn:hover {
+    transform: translateY(-5px);
+    background: #111111;
 }
 
 /* Style i shfaqjes se produkteve */
@@ -160,12 +126,12 @@ section{
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-    max-width: 1200px;
 }
 
 .product-card {
-    width: 23%;
-    background: #ffffff;
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -353,8 +319,7 @@ section{
   }
 /* Anisi */
 .main {
-
-    margin-left: 680px;
+    margin: 0 auto;
     margin-top: 200px;
     align-items: center;
     background-color: #ffffff;
@@ -362,7 +327,8 @@ section{
     border-radius: 12px;
     padding: 30px 40px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     text-align: center;
 }
 

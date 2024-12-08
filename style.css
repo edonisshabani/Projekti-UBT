@@ -13,12 +13,13 @@ header {
     top: 0;
     right: 0;
     z-index: 1000;
+    background-color: transparent;
+    transition:0.3s;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 7px;
-    transition: 0.35s;
 }
 
 .logo {
@@ -242,13 +243,13 @@ section{
 }
 
 /* Responsive design i shfaqjes se produkteve*/
-@media (max-width: 1024px) {
+@media (max-width: 1210px) {
     .product-card {
         width: 48%;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .product-card {
         width: 100%;
     }

@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #e6f7ff;
+    background-color: #eff9fd;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -96,7 +96,7 @@ section{
 }
 .btn:hover{
 	transform: translateY(-5px);
-	background: #111111;
+	background: #0f2b36;
 }
 
 /* Style i shfaqjes se produkteve */
@@ -123,12 +123,12 @@ section{
 
 .product-card {
     width: 23%;
-    background: #fff;
+    background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    transition:0.3s;
+    transition: 0.3s;
 }
 
 .product-card:hover {
@@ -183,6 +183,24 @@ section{
     color: #333;
     font-weight: 700;
 }
+
+/* Responsive design i shfaqjes se produkteve*/
+@media (max-width: 1024px) {
+    .product-card {
+        width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 100%;
+    }
+
+    .center-text h2 {
+        font-size: 36px;
+    }
+}
+
 /* Stilizimi i footerit*/
 .footer {
     background: linear-gradient(135deg, #000000, #303030);
@@ -194,7 +212,6 @@ section{
   .footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
@@ -253,10 +270,9 @@ section{
 .social-icons a {
     text-decoration: none;
     text-align: center;
-    padding-bottom: 15px;
     font-size: 14px;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 5px 20px;
     background: #444444;
     border-radius: 5px;
     transition:0.3s ;
@@ -276,12 +292,7 @@ section{
 .social-icons a.instagram:hover {
     background: #E1306C;
   }
-  
-.social-icons a.twitter:hover {
-    background: #1DA1F2; 
-  }
-  
-  .footer-bottom {
+ .footer-bottom {
     text-align: center;
     font-size: 14px;
     color: #aaaaaa;
@@ -290,8 +301,13 @@ section{
     border-top: 1px solid #555555;
   }
   
-  .footer-bottom p {
+.footer-bottom p {
     margin: 0;
+  }
+  @media (max-width: 520px) {
+    .footer-container {
+        justify-content: center;
+    }
   }
 /* Anisi */
 .main {

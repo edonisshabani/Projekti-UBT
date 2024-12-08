@@ -57,7 +57,7 @@ function validateForm() {
 
     const password = document.getElementById("password").value;
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com)$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|ubt-uni\.net)$/;
 
     const nameRegex = /^[A-Z][a-zA-Z]{1,19}$/;
 
@@ -66,7 +66,7 @@ function validateForm() {
         return false;
     }
     if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address (Gmail or Hotmail).");
+        alert("Please enter a valid email address (Gmail, Hotmail or UBT Email).");
         return false;
     }
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*.]{8,16}$/;
@@ -77,3 +77,21 @@ function validateForm() {
     return true;
 }
 
+function validateContactForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    const nameRegex = /^[A-Z][a-zA-Z]{1,19}$/;
+    if (!name.match(nameRegex)) {
+        alert("Name must start with a capital letter and be no longer than 20 characters.");
+        return false;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|ubt-uni\.net)$/;
+    if (!email.match(emailRegex)) {
+        alert("Please enter a valid email address (Gmail, Hotmail or UBT Email).");
+        return false;
+    }
+
+    return true;
+}

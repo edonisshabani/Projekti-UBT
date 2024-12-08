@@ -49,3 +49,31 @@ nextBtn.addEventListener('click', () => {
     }
     updateSlider();
 });
+
+function validateForm() {
+    const name = document.getElementById("name").value;
+
+    const email = document.getElementById("email").value;
+
+    const password = document.getElementById("password").value;
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com)$/;
+
+    const nameRegex = /^[A-Z][a-zA-Z]{1,19}$/;
+
+    if (!nameRegex.test(name)) {
+        alert("Name must start with a capital letter and be no longer than 20 characters.");
+        return false;
+    }
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address (Gmail or Hotmail).");
+        return false;
+    }
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*.]{8,16}$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password must be 8-16 characters, contain at least one uppercase letter, one number, and one symbol.");
+        return false;
+    }
+    return true;
+}
+

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default password is empty
-$database = "projekti_ubt"; // Change to your database name
+$username = "root"; 
+$password = ""; 
+$database = "projekti_ubt"; 
 
 $conn = new mysqli($servername, $username, $password, $database);
 

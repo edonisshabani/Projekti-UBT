@@ -8,9 +8,9 @@
     <title>Contact Us</title>
 </head>
 <body>
-  <header>
+<header>
     <a href="#" class="logo">EA10</a>
-    <button class="mob-menu" ><i class="fa-solid fa-bars"></i></button>
+    <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
     <ul class="navlist">
         <li><a href="index.html">Home</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -19,82 +19,42 @@
     </ul>
 </header>
 
-    <main class="contmain">
-        <div class="cont-form">
-
-            <div class="div-1hf">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23583.153899268826!2d21.148933900167936!3d42.36609318743188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13547e5d2cdacd71%3A0xec0e1a604157e8b5!2sFerizaj!5e0!3m2!1sen!2s!4v1733450754848!5m2!1sen!2s"  class="contm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-            <div class="div-2hf">
-                <section class="contact-us">
-                    <div class="formcont">
-                        <h2>Contact Us</h2>
-                        <p>Our pleasure to work with you! Fill out the form below to get in touch with us. </p>
-                        <form action="contact.php" method="post">
-                          <div class="forminp">
-                              <label for="name">Your Name</label>
-                              <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                          </div>
-                          <div class="forminp">
-                              <label for="email">Your Email</label>
-                              <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                          </div>
-                          <div class="forminp">
-                              <label for="message">Your Message</label>
-                              <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
-                          </div>
-                          <button type="submit" class="btnmsg">Send Message</button>
-                      </form>                      
-                    </div>
-                </section>
-            </div>
+<main class="contmain">
+    <div class="cont-form">
+        <div class="div-1hf">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23583.153899268826!2d21.148933900167936!3d42.36609318743188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13547e5d2cdacd71%3A0xec0e1a604157e8b5!2sFerizaj!5e0!3m2!1sen!2s!4v1733450754848!5m2!1sen!2s" 
+                    class="contm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
-    </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-          <!-- Pjesa e Informatave -->
-          <div class="footer-about">
-            <h3>About Us</h3>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsam illo, adipisci praesentium aperiam et.</p>
-          </div>
-      
-          <!-- Pjesa E linqeve -->
-          <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">Featured</a></li>
-              <li><a href="#">New Arrivals</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-      
-          <!-- Pjesa e kontaktit -->
-          <div class="footer-contact">
-            <h3>Contact Us</h3>
-            <p><strong>Email:</strong> ubt@uni-ubt.net</p>
-            <p><strong>Phone:</strong> +383 12 345 678</p>
-          </div>
-      
-          <!-- Pjesa e rrjeteve sociale -->
-          <div class="footer-social">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-              <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
-              <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
-              <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i> Twitter</a>
-            </div>
-          </div>                  
-        </div>
-      
-        <!-- Pjesa e copyright -->
-        <div class="footer-bottom">
-          <p>Copyright © 2024 All rights reserved | This Website is made by Two Students of "UBT College" E.SH & A.N</p>
-        </div>
-      </footer>
+        <div class="div-2hf">
+            <section class="contact-us">
+                <div class="formcont">
+                    <h2>Contact Us</h2>
+                    <p>Our pleasure to work with you! Fill out the form below to get in touch with us.</p>
 
-      <script src="script/main.js"></script>
+                    <form action="contact.php" method="post" class="contact-form" id="contactForm" onsubmit="return validateContactForm()">
+                        <div class="forminp">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="forminp">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="forminp">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btnmsg">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="script/main.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@
                     <div class="formcont">
                         <h2>Contact Us</h2>
                         <p>Our pleasure to work with you! Fill out the form below to get in touch with us. </p>
-                        <form action="contact.php" method="post">
+                        <form action="contact.php" method="post" class="contact-form" id="contactForm" onsubmit="return validateContactForm()">
                           <div class="forminp">
                               <label for="name">Your Name</label>
                               <input type="text" id="name" name="name" placeholder="Enter your name" required>

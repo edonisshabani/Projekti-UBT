@@ -6,6 +6,26 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/707ec381ad.js" crossorigin="anonymous"></script>
     <title>Contact Us</title>
+    <style>
+       
+        .message-box {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -28,75 +48,94 @@
             </iframe>
         </div>
 
-            <div class="div-2hf">
-                <section class="contact-us">
-                    <div class="formcont">
-                        <h2>Contact Us</h2>
-                        <p>Our pleasure to work with you! Fill out the form below to get in touch with us. </p>
-                        <form action="contact.php" method="post" class="contact-form" id="contactForm" onsubmit="return validateContactForm()">
-                          <div class="forminp">
-                              <label for="name">Your Name</label>
-                              <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                          </div>
-                          <div class="forminp">
-                              <label for="email">Your Email</label>
-                              <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                          </div>
-                          <div class="forminp">
-                              <label for="message">Your Message</label>
-                              <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
-                          </div>
-                          <button type="submit" class="btnmsg">Send Message</button>
-                      </form>                      
-                    </div>
-                </section>
-            </div>
+        <div class="div-2hf">
+            <section class="contact-us">
+                <div class="formcont">
+                    <h2>Contact Us</h2>
+                    <p>Fill out the form below to get in touch with us. </p>
+                    
+                    <div id="messageBox" class="message-box"></div>
+                    <form action="contact.php" method="post" class="contact-form" id="contactForm" onsubmit="return validateContactForm()">
+                        <div class="forminp">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="forminp">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="forminp">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btnmsg">Send Message</button>
+                    </form>                      
+                </div>
+            </section>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="footer">
-        <div class="footer-container">
-          <!-- Pjesa e Informatave -->
-          <div class="footer-about">
-            <h3>About Us</h3>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsam illo, adipisci praesentium aperiam et.</p>
-          </div>
-      
-          <!-- Pjesa E linqeve -->
-          <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">Featured</a></li>
-              <li><a href="#">New Arrivals</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-      
-          <!-- Pjesa e kontaktit -->
-          <div class="footer-contact">
-            <h3>Contact Us</h3>
-            <p><strong>Email:</strong> ubt@uni-ubt.net</p>
-            <p><strong>Phone:</strong> +383 12 345 678</p>
-          </div>
-      
-          <!-- Pjesa e rrjeteve sociale -->
-          <div class="footer-social">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-              <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
-              <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
-              <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i> Twitter</a>
-            </div>
-          </div>                  
+<footer class="footer">
+    <div class="footer-container">
+      <!-- Pjesa e Informatave -->
+      <div class="footer-about">
+        <h3>About Us</h3>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsam illo, adipisci praesentium aperiam et.</p>
+      </div>
+  
+      <!-- Pjesa E linqeve -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Featured</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Pjesa e kontaktit -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><strong>Email:</strong> ubt@uni-ubt.net</p>
+        <p><strong>Phone:</strong> +383 12 345 678</p>
+      </div>
+  
+      <!-- Pjesa e rrjeteve sociale -->
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i> Twitter</a>
         </div>
-      
-        <!-- Pjesa e copyright -->
-        <div class="footer-bottom">
-          <p>Copyright © 2024 All rights reserved | This Website is made by Two Students of "UBT College" E.SH & A.N</p>
-        </div>
-      </footer>
+      </div>                  
+    </div>
+  
+    <!-- Pjesa e copyright -->
+    <div class="footer-bottom">
+      <p>Copyright © 2024 All rights reserved | This Website is made by Two Students of "UBT College" E.SH & A.N</p>
+    </div>
+</footer>
 
+<script>
+
+    function showMessage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const messageBox = document.getElementById('messageBox');
+
+        if (status === 'success') {
+            messageBox.textContent = 'Thank you! Your message has been sent successfully.';
+            messageBox.classList.add('success');
+        } else if (status === 'error') {
+            messageBox.textContent = 'An error occurred. Please try again.';
+            messageBox.classList.add('error');
+        }
+    }
+    window.onload = showMessage;
+</script>
 <script src="script/main.js"></script>
 </body>
 </html>

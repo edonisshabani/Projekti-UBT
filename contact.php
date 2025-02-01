@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "INSERT INTO message (message_name, message_email, message_description) VALUES ('$name', '$email', '$msgText')";
 
+       
         if (mysqli_query($con, $query)) {
             header("Location: contact.html?status=success");
             exit();
@@ -22,4 +23,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-A

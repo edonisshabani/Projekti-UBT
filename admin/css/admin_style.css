@@ -1,47 +1,12 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #f4f4f4;
     display: flex;
-}
-
-
-.login-container {
-    width: 300px;
-    margin: 100px auto;
-    background: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-.error {
-    color: red;
-    margin-top: 10px;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -53,6 +18,7 @@ button:hover {
     position: fixed;
     left: 0;
     top: 0;
+    transition: 0.3s;
 }
 
 .sidebar h2 {
@@ -98,9 +64,49 @@ button:hover {
     margin: 50px auto;
     width: 80%;
     text-align: center;
+}
+
+.add-product-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+}
+
+form .form-group {
+    margin-bottom: 20px;
+}
+
+form .form-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form .form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form button {
+    padding: 12px 20px;
+    background: rgb(0,123,255);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background: rgb(0, 97, 201);
 }
 
 table {
@@ -119,7 +125,6 @@ th, td {
 th {
     background: #007BFF;
     color: white;
-     border: 2px solid #007BFF
 }
 
 tr:hover {
@@ -138,8 +143,7 @@ tr:hover {
     background: darkred;
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .sidebar {
         width: 200px;
     }
@@ -151,25 +155,153 @@ tr:hover {
 
     .admin-container {
         width: 90%;
-        padding: 10px;
+        padding: 15px;
     }
 
     table {
         font-size: 14px;
     }
-}
-.form-group {
-    margin-bottom: 15px;
+
+    .add-product-form form {
+        padding: 15px;
+        box-sizing: border-box;
+    }
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+        padding: 10px;
+    }
+
+    .main-content {
+        margin-left: 150px;
+        width: calc(100% - 150px);
+    }
+
+    .admin-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+    }
+
+    .sidebar ul li a {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    form .form-group input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    form button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }
 
-.form-group input {
-    width: 100%;
-    padding: 10px;
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .admin-container {
+        width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    form .form-group input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    form button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .delete-btn {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .sidebar h2 {
+        font-size: 14px;
+    }
+
+    .sidebar ul li a {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    form .form-group input {
+        padding: 6px;
+        font-size: 10px;
+    }
+
+    form button {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    .delete-btn {
+        padding: 2px 4px;
+        font-size: 10px;
+    }
+}
+.export-btn {
+    padding: 10px 20px;
+    background-color: rgb(0,123,255);
+    color: white;
+    border: none;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.export-btn:hover {
+    background-color: rgb(0, 97, 201);
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../config.php';
+include('authentication.php');
 
 $query = "SELECT * FROM users";
 $result = mysqli_query($con, $query);

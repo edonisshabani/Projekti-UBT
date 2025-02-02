@@ -1,5 +1,6 @@
 <?php
 include('../config.php');
+include('authentication.php');
 session_start();
 if (!isset($_SESSION["visits"])) {
     $_SESSION["visits"] = 1;
@@ -24,7 +25,7 @@ if (isset($_POST['add_product'])) {
 
     if (in_array($image_ext, $allowed_ext) && $image_size <= 5000000) {
         $image_new_name = uniqid('', true) . '.' . $image_ext;
-        $image_destination = 'img/' . $image_new_name;
+        $image_destination = '../img/' . $image_new_name;
 
         if (move_uploaded_file($image_tmp, $image_destination)) {
             $add_query = "INSERT INTO products (name, price, discount, quantity, image) 
@@ -53,6 +54,18 @@ if (isset($_GET['delete_id'])) {
         echo "<p style='color:red;'>Error deleting product!</p>";
     }
 }
+if (isset($_POST['export_excel'])) {
+    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="product_list.xls"');
+    header('Cache-Control: max-age=0');
+
+    echo "ID\tName\tPrice\tDiscount\tQuantity\tImage\n";
+
+    while ($row = $result->fetch_assoc()) {
+        echo $row['id'] . "\t" . $row['name'] . "\t$" . $row['price'] . "\t-" . $row['discount'] . "%\t" . $row['quantity'] . "\t" . $row['image'] . "\n";
+    }
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,14 +88,13 @@ if (isset($_GET['delete_id'])) {
     </div>
 
     <div class="main-content">
-
         <div class="admin-container">
             <h3>Site Visit Counter</h3>
             <p>You have visited this page <?= $_SESSION["visits"] ?> times.</p>
         </div>
 
         <div class="admin-container">
-            <h3>Product List</h3>
+            
             <table>
                 <thead>
                     <tr>
@@ -99,13 +111,17 @@ if (isset($_GET['delete_id'])) {
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+                            $image_path = $row['image'];
+                            if (strpos($image_path, 'http') === false && !file_exists($image_path)) {
+                                $image_path = '../' . $image_path;
+                            }
                             echo "<tr>
                                     <td>" . $row['id'] . "</td>
                                     <td>" . $row['name'] . "</td>
                                     <td>$" . $row['price'] . "</td>
                                     <td>-" . $row['discount'] . "%</td>
                                     <td>" . $row['quantity'] . "</td>
-                                    <td><img src='" . $row['image'] . "' alt='" . $row['name'] . "' width='50'></td>
+                                    <td><img src='" . $image_path . "' alt='" . $row['name'] . "' width='50'></td>
                                     <td>
                                         <a href='?delete_id=" . $row['id'] . "' class='delete-btn' onclick='return confirm(\"Are you sure?\")'>Delete</a>
                                     </td>
@@ -117,9 +133,12 @@ if (isset($_GET['delete_id'])) {
                     ?>
                 </tbody>
             </table>
+            <form method="POST">
+                <button type="submit" name="export_excel" class="export-btn">Export to Excel</button>
+            </form>
         </div>
 
-        <div class="admin-container">
+        <div class="admin-container add-product-form">
             <h3>Add New Product</h3>
             <form action="index.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">

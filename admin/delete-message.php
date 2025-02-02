@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../config.php';
+include('authentication.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

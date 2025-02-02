@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2025 at 07:27 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Feb 02, 2025 at 09:35 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,11 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `created_at`) VAL
 (7, 6, 2, 1, '2025-02-02 16:56:10'),
 (8, 6, 1, 7, '2025-02-02 17:01:39'),
 (9, 6, 4, 1, '2025-02-02 17:29:35'),
-(10, 6, 3, 1, '2025-02-02 17:29:50');
+(10, 6, 3, 1, '2025-02-02 17:29:50'),
+(22, 7, 3, 1, '2025-02-02 18:41:09'),
+(23, 8, 2, 5, '2025-02-02 19:11:58'),
+(24, 8, 1, 1, '2025-02-02 19:12:03'),
+(25, 8, 3, 1, '2025-02-02 19:12:37');
 
 -- --------------------------------------------------------
 
@@ -99,6 +103,54 @@ INSERT INTO `message` (`id`, `message_name`, `message_email`, `message_descripti
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
+  `shipping_name` varchar(100) NOT NULL,
+  `shipping_address` varchar(255) NOT NULL,
+  `shipping_phone` varchar(20) NOT NULL,
+  `shipping_zip` varchar(20) NOT NULL,
+  `shipping_country` varchar(100) NOT NULL DEFAULT 'Kosova',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `shipping_name`, `shipping_address`, `shipping_phone`, `shipping_zip`, `shipping_country`, `created_at`) VALUES
+(1, 5, '300.00', 'Anis Neziri', 'Rr. Enver Topalli', '045415815', '70000', 'Kosova', '2025-02-02 20:15:06'),
+(2, 5, '300.00', 'Anis Neziri', 'Rr. Enver Topalli', '045415815', '70000', 'Kosova', '2025-02-02 20:32:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_name`, `quantity`, `price`) VALUES
+(1, 1, 'Gaming Mouse', 2, '150.00'),
+(2, 2, 'Gaming Mouse', 2, '150.00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -117,15 +169,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category`, `price`, `discount`, `image`, `quantity`) VALUES
-(1, 'Laptop 1', 'Laptops', 1000.00, 20.00, 'img/fea1.jpg', 7),
-(2, 'Gaming Mouse', 'Mouses', 150.00, 15.00, 'img/fea2.jpg', 10),
-(3, 'DSLR Camera', 'Cameras', 700.00, 20.00, 'img/fea3.jpg', 5),
-(4, 'Desktop PC', 'Computers', 1200.00, 17.00, 'img/fea4.jpg', 10),
-(5, 'New Laptop', 'Laptops', 1200.00, 10.00, 'img/new1.jpg', 5),
-(6, 'Wireless Mouse', 'Mouses', 150.00, 5.00, 'img/new2.jpg', 8),
-(7, 'Mirrorless Camera', 'Cameras', 350.00, 15.00, 'img/new3.jpg', 3),
-(8, 'Gaming PC', 'Computers', 900.00, 10.00, 'img/new4.jpg', 6),
-(9, 'Ultrabook', 'Laptops', 100.00, 20.00, 'img/new5.jpg', 12);
+(1, 'Laptop 1', 'Laptops', '1000.00', '20.00', 'img/fea1.jpg', 7),
+(2, 'Gaming Mouse', 'Mouses', '150.00', '15.00', 'img/fea2.jpg', 10),
+(3, 'DSLR Camera', 'Cameras', '700.00', '20.00', 'img/fea3.jpg', 5),
+(4, 'Desktop PC', 'Computers', '1200.00', '17.00', 'img/fea4.jpg', 10),
+(5, 'New Laptop', 'Laptops', '1200.00', '10.00', 'img/new1.jpg', 5),
+(6, 'Wireless Mouse', 'Mouses', '150.00', '5.00', 'img/new2.jpg', 8),
+(7, 'Mirrorless Camera', 'Cameras', '350.00', '15.00', 'img/new3.jpg', 3),
+(8, 'Gaming PC', 'Computers', '900.00', '10.00', 'img/new4.jpg', 6),
+(9, 'Ultrabook', 'Laptops', '100.00', '20.00', 'img/new5.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -148,7 +200,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
 (2, 'uidashd', 'jhdkja@hotmail.com', '$2y$10$2YSpJB7Z2IGBo340YZGo4OVlHsEurSCHB3eVgtzTCGF/SPzmFWT0W', 'user'),
 (5, 'admin', 'admin@hotmail.com', '$2y$10$nqoV3LQKSELJDOjHntk2JufTHWZWPJLKgQ/roJtl7oWMXxGZsiNEW', 'admin'),
-(6, 'ttest', 'test@gmail.com', '$2y$10$Mza1ByiVMnK4TM0uLbJd8e2vQ9z6oawm3VVwfa33u6C.uFPc1sg8K', 'user');
+(6, 'ttest', 'test@gmail.com', '$2y$10$Mza1ByiVMnK4TM0uLbJd8e2vQ9z6oawm3VVwfa33u6C.uFPc1sg8K', 'user'),
+(7, 'Eris', 'erisqeni@hotmail.com', '$2y$10$4Ok/4x7z3ZFX.41a7BUdJue.rptQ953wwcpHlw8zU4Aj7Md.nvyDm', 'user'),
+(8, 'Anis', 'anisiineziri@hotmail.com', '$2y$10$j.ivkLys/RqR.U7k.Ro1oOw7UZqZUUMFfHuI5P6k5AgsHrHwnPEAW', 'user');
 
 --
 -- Indexes for dumped tables
@@ -173,6 +227,20 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `products`
@@ -200,7 +268,7 @@ ALTER TABLE `about_us`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -209,16 +277,28 @@ ALTER TABLE `message`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -230,6 +310,18 @@ ALTER TABLE `users`
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

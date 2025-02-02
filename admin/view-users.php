@@ -30,6 +30,16 @@ $result = mysqli_query($con, $query);
     <div class="main-content">
         <div class="admin-container">
             <h2>User List</h2>
+
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="message">
+                    <?php
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                    ?>
+                </div>
+            <?php endif; ?>
+
             <table>
                 <thead>
                     <tr>
@@ -40,14 +50,20 @@ $result = mysqli_query($con, $query);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <?php while ($row = mysqli_fetch_assoc($result)): ?>
                         <tr>
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['email']; ?></td>
-                            <td><a href="delete_user.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?');">Delete</a></td>
+                            <td>
+                                <a href="delete_user.php?id=<?php echo $row['id']; ?>" 
+                                   class="delete-btn" 
+                                   onclick="return confirm('Are you sure you want to delete this user?');">
+                                   Delete
+                                </a>
+                            </td>
                         </tr>
-                    <?php } ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>

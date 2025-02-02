@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
 include('../config.php');
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
-    $_SESSION['message'] = "You must log in as an admin first";
+    $_SESSION['message'] = "You must log in as an admin first.";
     header("Location: ../login.php");
     exit();
 }
@@ -17,3 +17,4 @@ if (mysqli_num_rows($result) == 0) {
     header("Location: ../login.php");
     exit();
 }
+?>

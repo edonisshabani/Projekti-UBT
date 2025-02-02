@@ -3,22 +3,24 @@ session_start();
 include '../config.php';
 include('authentication.php');
 
-if (!isset($_SESSION['admin_logged_in'])) {
-    header('Location: ../login.php');
-    exit();
-}
-
 if (isset($_GET['id'])) {
     $user_id = intval($_GET['id']);
+
+    $query = "DELETE FROM cart WHERE user_id = $user_id";
+    mysqli_query($con, $query);
+
     $query = "DELETE FROM users WHERE id = $user_id";
     $result = mysqli_query($con, $query);
 
     if ($result) {
-        header("Location: view-users.php?message=User Deleted Successfully");
+        $_SESSION['message'] = "User deleted successfully.";
     } else {
-        echo "Error deleting user: " . mysqli_error($con);
+        $_SESSION['message'] = "Error deleting user: " . mysqli_error($con);
     }
 } else {
-    echo "Invalid user ID!";
+    $_SESSION['message'] = "Invalid user ID!";
 }
+
+header("Location: view-users.php");
+exit();
 ?>

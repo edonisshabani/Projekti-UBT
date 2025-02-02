@@ -15,7 +15,7 @@ include 'config.php';
         .user-section {
             display: flex;
             align-items: center;
-            gap: 8px; /* Spacing between icon and name */
+            gap: 8px;
         }
         .user-icon img {
             width: 35px;
@@ -73,7 +73,7 @@ include 'config.php';
                         <a href="logout.php">Logout</a>
                     </div>
                 </div>
-                <span class="user-name"><?= htmlspecialchars($_SESSION['user_name']); ?></span>
+                <span class="user-name" ><?= htmlspecialchars($_SESSION['user_name']); ?></span>
             </li>
         <?php else: ?>
             <li><a href="login.php">LogIn</a></li>

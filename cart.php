@@ -113,6 +113,7 @@ $result = mysqli_query($con, $query);
 <body>
 
 <div class="container">
+<a href="index.php" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
     <h2>Your Shopping Cart</h2>
 
     <?php if (mysqli_num_rows($result) > 0) { ?>

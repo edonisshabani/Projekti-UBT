@@ -3,14 +3,10 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['message'] = "Please log in to add items to the cart!";
-    header("Location: login.php");
     exit();
 }
 
 if (!isset($_POST['product_id'])) {
-    $_SESSION['message'] = "Invalid product selection!";
-    header("Location: index.php");
     exit();
 }
 
@@ -38,6 +34,14 @@ if ($row) {
     mysqli_stmt_execute($insert_stmt);
 }
 
-header("Location: cart.php");
+$cart_query = "SELECT SUM(quantity) AS total_items FROM cart WHERE user_id = ?";
+$cart_stmt = mysqli_prepare($con, $cart_query);
+mysqli_stmt_bind_param($cart_stmt, "i", $user_id);
+mysqli_stmt_execute($cart_stmt);
+$cart_result = mysqli_stmt_get_result($cart_stmt);
+$cart_row = mysqli_fetch_assoc($cart_result);
+$cart_count = $cart_row['total_items'] ? $cart_row['total_items'] : 0;
+
+echo $cart_count;
 exit();
 ?>

@@ -120,7 +120,8 @@ include 'config.php';
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="add-to-cart">Add to Cart <i class="fa-solid fa-cart-shopping"></i></button>
                         </form>
-                        <button class="buy-now">Buy Now</button>
+                        <button class="buy-now" onclick="window.location.href='checkout.php?product_id=<?= $row['id']; ?>'">Buy Now</button>
+
                     </div>
                 </div>
             </div>

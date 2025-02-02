@@ -37,6 +37,7 @@ $result = mysqli_query($con, $query);
                         <th>Email</th>
                         <th>Message</th>
                         <th>Received At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,12 +48,12 @@ $result = mysqli_query($con, $query);
                             <td><?php echo $row['message_email']; ?></td>
                             <td><?php echo $row['message_description']; ?></td>
                             <td><?php echo $row['created_at']; ?></td>
+                            <td><a href="delete-message.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?');">Delete</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-
 </body>
 </html>

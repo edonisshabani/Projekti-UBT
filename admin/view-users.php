@@ -44,7 +44,7 @@ $result = mysqli_query($con, $query);
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['email']; ?></td>
-                            <td><a href="delete_user.php?id=<?php echo $row['id']; ?>" class="delete-btn">Delete</a></td>
+                            <td><a href="delete_user.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?');">Delete</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

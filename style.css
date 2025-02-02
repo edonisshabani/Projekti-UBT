@@ -724,21 +724,22 @@ section {
 
 .cont-form {
     display: flex;
-    gap: 150px;
+    flex-direction: column;
+    gap: 50px;
     align-items: center;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .div-1hf {
     flex: 1;
-    max-width: 100%;
+    width: 100%;
 }
 
 .div-1hf iframe {
     width: 100%;
-    height: 500px;
+    height: 400px;
     border: 0;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -746,40 +747,30 @@ section {
 
 .div-2hf {
     flex: 1;
-    max-width: 50%;
+    width: 90%;
     background: #ffffff;
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 0;
-}
-
-.contact-us {
-    margin-top: 0;
-    padding-top: 0;
 }
 
 .contact-us h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: #007acc;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
 .contact-us p {
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
-.contact-us {
-    height: 500px;
-}
-
 .contact-form .forminp {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .contact-form label {
@@ -794,7 +785,7 @@ section {
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     font-size: 14px;
     border: 1px solid #ccd6dd;
     border-radius: 8px;
@@ -811,12 +802,12 @@ section {
 
 .contact-form textarea {
     resize: none;
-    height: 120px;
+    height: 100px;
 }
 
 .contact-form .btnmsg {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background-color: #007acc;
     color: #ffffff;
     font-size: 16px;
@@ -836,39 +827,42 @@ section {
     transform: translateY(0);
 }
 
-@media (min-width: 992px) {
-    .main {
-        width: 450px;
-    }
-
+@media (min-width: 768px) {
     .cont-form {
-        gap: 100px;
+        flex-direction: row;
+        gap: 50px;
     }
-
     .div-1hf iframe {
-        height: 550px;
+        height: 500px;
     }
-
     .div-2hf {
-        padding: 50px;
+        width: 60%;
+        padding: 40px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cont-form {
+        gap: 80px;
+    }
+    .div-1hf iframe {
+        height: 600px;
+    }
+    .div-2hf {
+        width: 50%;
     }
 }
 
 @media (min-width: 1200px) {
-    .main {
-        width: 500px;
-    }
-
     .cont-form {
-        gap: 200px;
+        gap: 100px;
     }
-
     .div-1hf iframe {
-        height: 600px;
+        height: 650px;
     }
-
     .div-2hf {
-        padding: 60px;
+        width: 40%;
+        padding: 50px;
     }
 }
 

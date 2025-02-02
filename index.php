@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'config.php';
 ?>
 
@@ -10,6 +11,40 @@ include 'config.php';
     <title>EA10 - Tech Store</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/707ec381ad.js" crossorigin="anonymous"></script>
+    <style>
+        .user-icon {
+            position: relative;
+            display: inline-block;
+            padding-left: 30px;
+        }
+        .user-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .user-icon:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +58,16 @@ include 'config.php';
             <li><a href="#new-arrivals">New</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="login.php">LogIn</a></li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <li class="user-icon">
+                    <img src="img/user-icon.png" alt="User Icon">
+                    <div class="dropdown-content">
+                        <a href="logout.php">Logout</a>
+                    </div>
+                </li>
+            <?php else: ?>
+                <li><a href="login.php">LogIn</a></li>
+            <?php endif; ?>
         </ul>
     </header>
 
@@ -44,7 +88,7 @@ include 'config.php';
 
         <div class="featured-content">
             <?php
-            $sql = "SELECT * FROM products LIMIT 4"; 
+            $sql = "SELECT * FROM products LIMIT 4";
             $result = $con->query($sql);
 
             if ($result->num_rows > 0) {
@@ -80,7 +124,7 @@ include 'config.php';
         </div>
         <div class="featured-content">
             <?php
-            $sql = "SELECT * FROM products LIMIT 4"; 
+            $sql = "SELECT * FROM products LIMIT 4";
             $result = $con->query($sql);
 
             if ($result->num_rows > 0) {

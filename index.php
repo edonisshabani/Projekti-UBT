@@ -11,46 +11,6 @@ include 'config.php';
     <title>EA10 - Tech Store</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/707ec381ad.js" crossorigin="anonymous"></script>
-    <style>
-        .user-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .user-icon img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .user-name {
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-            white-space: nowrap;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 50;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .user-icon:hover .dropdown-content {
-            display: block;
-        }
-    </style>
 </head>
 <body>
 
@@ -63,7 +23,7 @@ include 'config.php';
         <li><a href="#featured">Featured</a></li>
         <li><a href="#new-arrivals">New</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="aboutus.php">About Us</a></li>
 
         <?php if (isset($_SESSION['user_id'])): ?>
             <li class="user-section">

@@ -1,3 +1,12 @@
+<?php 
+session_start();
+include 'config.php';
+
+$sql = "SELECT * FROM about_us LIMIT 1";
+$result = $con->query($sql);
+$about_us = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +24,7 @@
         <ul class="navlist">
             <li><a href="index.php">Home</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
             <li><a href="login.php">Log In</a></li>
         </ul>
     </header>
@@ -23,13 +32,12 @@
     <section class="buys">
         <div class="buyc">
             <div class="buyt">
-                <h2>Why Choose Our Tech Store?</h2>
-                <p>At EA10, we provide top-quality tech products with the best discounts in the market. Our carefully selected items are guaranteed to meet your needs, whether you're looking for the latest laptop, a high-performance mouse, or advanced cameras. Our products are reliable, cutting-edge, and available at competitive prices!</p>
-                <p>Shop with us and enjoy fast shipping, excellent customer service, and secure payments. Make your tech experience extraordinary with EA10!</p>
+                <h2><?= $about_us['title']; ?></h2>
+                <p><?= $about_us['content']; ?></p>
                 <a href="#" class="learnbtn">Learn More</a>
             </div>
             <div class="buy-image">
-                <img src="img/cbg.jpg" alt="Why Choose Us">
+                <img src="<?= $about_us['image_url']; ?>" alt="Why Choose Us">
             </div>
         </div>
     </section>
@@ -49,7 +57,7 @@
               <li><a href="index.php">Home</a></li>
               <li><a href="#">Featured</a></li>
               <li><a href="#">New Arrivals</a></li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
           </div>
       
@@ -64,7 +72,7 @@
           <div class="footer-social">
             <h3>Follow Us</h3>
             <div class="social-icons">
-              <a href="https://www.facebook.com/ubthighereducationinstitution/" target="_blank"  class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+              <a href="https://www.facebook.com/ubthighereducationinstitution/" target="_blank" class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
               <a href="https://www.instagram.com/ubt_official/?hl=en" target="_blank" class="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
             </div>
           </div>                  
@@ -74,8 +82,8 @@
         <div class="footer-bottom">
           <p>Copyright © 2024 All rights reserved | This Website is made by Two Students of "UBT College" E.SH & A.N</p>
         </div>
-      </footer>
-      
-      <script src="script/main.js"></script>
+    </footer>
+    
+    <script src="script/main.js"></script>
 </body>
 </html>

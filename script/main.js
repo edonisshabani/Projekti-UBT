@@ -95,3 +95,13 @@ function validateContactForm() {
 
     return true;
 }
+
+window.onload = function () {
+    const messageBox = document.getElementById('message');
+    if (messageBox && messageBox.textContent.trim() !== "") {
+        setTimeout(() => {
+            messageBox.style.display = "none";
+        }, 3000);
+    }
+};
+

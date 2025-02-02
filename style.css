@@ -978,3 +978,14 @@ padding-left: 7px;
         height: auto;
     }
 }
+.success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

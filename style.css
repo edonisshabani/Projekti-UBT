@@ -13,8 +13,7 @@ header {
     top: 0;
     right: 0;
     z-index: 1000;
-    background-color:#eff9fd;
-    opacity: 0.1;
+    background-color:transparent;
     transition:0.3s;
     position: fixed;
     display: flex;

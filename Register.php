@@ -22,13 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_query = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashed_password')";
         
         if (mysqli_query($con, $insert_query)) {
-            $message = "Registration successful! Please log in.";
+            $message = "Registration successful! Now login...";
             $type = "success";
+            header("Refresh: 2; url=login.php");
         } else {
             $message = "Error during registration. Please try again.";
             $type = "error";
         }
-    }
+}
 }
 ?>
 

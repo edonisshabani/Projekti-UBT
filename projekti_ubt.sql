@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2025 at 03:48 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Feb 02, 2025 at 05:05 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,18 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `projekti_ubt`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
-CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -61,7 +49,6 @@ INSERT INTO `message` (`id`, `message_name`, `message_email`, `message_descripti
 (7, 'Sadih', 'ja@hotmail.com', 'ahsdb\r\n', '2025-02-01 16:45:43'),
 (8, 'HollyHard', 'HollyHarding@gmail.com', 'dkajsdnajkd', '2025-02-01 16:46:34'),
 (9, 'HS', 'dajsn@hotmail.com', 'JASDK', '2025-02-01 16:53:50'),
-(10, 'Ajsa', 'dajsd@gmail.com', 'dasuhdakjd', '2025-02-01 16:58:57'),
 (11, 'Hello', 'akdjajk@gmail.com', 'djkad', '2025-02-01 17:22:47'),
 (12, 'Edo', 'dnsajkdn@gmail.com', 'dajksdna@gmail.com', '2025-02-01 17:42:35');
 
@@ -114,15 +101,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category`, `price`, `discount`, `image`, `quantity`) VALUES
-(1, 'Laptop 1', 'Laptops', '1000.00', '20.00', 'img/fea1.jpg', 7),
-(2, 'Gaming Mouse', 'Mouses', '150.00', '15.00', 'img/fea2.jpg', 10),
-(3, 'DSLR Camera', 'Cameras', '700.00', '20.00', 'img/fea3.jpg', 5),
-(4, 'Desktop PC', 'Computers', '1200.00', '17.00', 'img/fea4.jpg', 10),
-(5, 'New Laptop', 'Laptops', '1200.00', '10.00', 'img/new1.jpg', 5),
-(6, 'Wireless Mouse', 'Mouses', '150.00', '5.00', 'img/new2.jpg', 8),
-(7, 'Mirrorless Camera', 'Cameras', '350.00', '15.00', 'img/new3.jpg', 3),
-(8, 'Gaming PC', 'Computers', '900.00', '10.00', 'img/new4.jpg', 6),
-(9, 'Ultrabook', 'Laptops', '100.00', '20.00', 'img/new5.jpg', 12);
+(1, 'Laptop 1', 'Laptops', 1000.00, 20.00, 'img/fea1.jpg', 7),
+(2, 'Gaming Mouse', 'Mouses', 150.00, 15.00, 'img/fea2.jpg', 10),
+(3, 'DSLR Camera', 'Cameras', 700.00, 20.00, 'img/fea3.jpg', 5),
+(4, 'Desktop PC', 'Computers', 1200.00, 17.00, 'img/fea4.jpg', 10),
+(5, 'New Laptop', 'Laptops', 1200.00, 10.00, 'img/new1.jpg', 5),
+(6, 'Wireless Mouse', 'Mouses', 150.00, 5.00, 'img/new2.jpg', 8),
+(7, 'Mirrorless Camera', 'Cameras', 350.00, 15.00, 'img/new3.jpg', 3),
+(8, 'Gaming PC', 'Computers', 900.00, 10.00, 'img/new4.jpg', 6),
+(9, 'Ultrabook', 'Laptops', 100.00, 20.00, 'img/new5.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -134,26 +121,22 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1, 'test', 'test@hotmail.com', '$2y$10$1IGJnQzqr8TES8P0HeqHa.ITE0OJ45awbvfQiqFloKuAwrRPcw7ka');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
+(2, 'uidashd', 'jhdkja@hotmail.com', '$2y$10$2YSpJB7Z2IGBo340YZGo4OVlHsEurSCHB3eVgtzTCGF/SPzmFWT0W', 'user'),
+(5, 'admin', 'admin@hotmail.com', '$2y$10$nqoV3LQKSELJDOjHntk2JufTHWZWPJLKgQ/roJtl7oWMXxGZsiNEW', 'admin'),
+(6, 'ttest', 'test@gmail.com', '$2y$10$Mza1ByiVMnK4TM0uLbJd8e2vQ9z6oawm3VVwfa33u6C.uFPc1sg8K', 'user');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `message`
@@ -193,12 +176,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
@@ -226,7 +203,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

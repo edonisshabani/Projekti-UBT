@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
-            header("Location: index.html");
+            header("Location: index.php");
             exit();
         } else {
             $message = "Invalid password!";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="main">
-    <a href="index.html" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
+    <a href="index.php" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
     <h1>Welcome Back</h1>
     <p class="subtitle">Log in to your account</p>
     <p id="message" class="<?= $type === 'error' ? 'error-message' : ($type === 'success' ? 'success-message' : '') ?>">

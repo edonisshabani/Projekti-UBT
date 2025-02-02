@@ -45,7 +45,7 @@ include 'config.php';
         <div class="featured-content">
             <?php
             $sql = "SELECT * FROM products LIMIT 4"; 
-            $result = $conn->query($sql);
+            $result = $con->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -81,7 +81,7 @@ include 'config.php';
         <div class="featured-content">
             <?php
             $sql = "SELECT * FROM products LIMIT 4"; 
-            $result = $conn->query($sql);
+            $result = $con->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -129,7 +129,7 @@ include 'config.php';
         <div class="na-c">
             <?php
             $sql = "SELECT * FROM products ORDER BY id DESC LIMIT 5";
-            $result = $conn->query($sql);
+            $result = $con->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

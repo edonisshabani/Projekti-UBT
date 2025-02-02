@@ -32,7 +32,7 @@ if ($user_id) {
         <li><a href="index.php">Home</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="#new-arrivals">New</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
         <li><a href="aboutus.php">About Us</a></li>
 
         <?php if (isset($_SESSION['user_id'])): ?>
@@ -205,7 +205,7 @@ if ($user_id) {
                     <li><a href="index.php">Home</a></li>
                     <li><a href="#featured">Featured</a></li>
                     <li><a href="#new-arrivals">New Arrivals</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
 

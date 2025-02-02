@@ -1,50 +1,58 @@
 <?php
 session_start();
 include '../config.php';
-//include('authentication.php');
 
 $query = "SELECT * FROM message";
 $result = mysqli_query($con, $query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Messages</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="css/admin_style.css">
 </head>
 <body>
-    <header>
-        <h1>View Messages</h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="view-users.php">Manage Users</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Messages</h2>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Received At</th>
-            </tr>
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['message_name']; ?></td>
-                    <td><?php echo $row['message_email']; ?></td>
-                    <td><?php echo $row['message_description']; ?></td>
-                    <td><?php echo $row['created_at']; ?></td>
-                </tr>
-            <?php } ?>
-        </table>
-    </main>
+
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="view-users.php">Manage Users</a></li>
+            <li><a href="view-messages.php" class="active">View Messages</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="admin-container">
+            <h2>Messages</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Received At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <tr>
+                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $row['message_name']; ?></td>
+                            <td><?php echo $row['message_email']; ?></td>
+                            <td><?php echo $row['message_description']; ?></td>
+                            <td><?php echo $row['created_at']; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
 </html>

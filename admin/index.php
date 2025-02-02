@@ -18,7 +18,7 @@ include('../config.php');
         <ul>
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="view-users.php">Manage Users</a></li>
-            <li><a href="#">Test</a></li>
+            <li><a href="view-messages.php">View messages</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>

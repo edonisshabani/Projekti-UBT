@@ -14,32 +14,32 @@ include 'config.php';
 </head>
 <body>
 
-    <!----Menu e Webit--->
-    <header>
-    <a href="#" class="logo">EA10</a>
-    <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
-    <ul class="navlist">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="#featured">Featured</a></li>
-        <li><a href="#new-arrivals">New</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="aboutus.php">About Us</a></li>
+        <!----Menu e Webit--->
+        <header>
+        <a href="#" class="logo">EA10</a>
+        <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
+        <ul class="navlist">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#new-arrivals">New</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
 
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="user-section">
-                <div class="user-icon">
-                    <img src="img/user-icon.png" alt="User Icon">
-                    <div class="dropdown-content">
-                        <a href="logout.php">Logout</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <li class="user-section">
+                    <div class="user-icon">
+                        <img src="img/user-icon.png" alt="User Icon">
+                        <div class="dropdown-content">
+                            <a href="logout.php">Logout</a>
+                        </div>
                     </div>
-                </div>
-                <span class="user-name" ><?= htmlspecialchars($_SESSION['user_name']); ?></span>
-            </li>
-        <?php else: ?>
-            <li><a href="login.php">LogIn</a></li>
-        <?php endif; ?>
-    </ul>
-</header>
+                    <span class="user-name" ><?= htmlspecialchars($_SESSION['user_name']); ?></span>
+                </li>
+            <?php else: ?>
+                <li><a href="login.php">LogIn</a></li>
+            <?php endif; ?>
+        </ul>
+    </header>
 
     <!----home-ballina--->
     <section class="home" id="home">

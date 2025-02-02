@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2025 at 02:31 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Feb 02, 2025 at 03:48 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -101,12 +101,28 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `discount` decimal(5,2) DEFAULT 0.00,
+  `image` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `category`, `price`, `discount`, `image`, `quantity`) VALUES
+(1, 'Laptop 1', 'Laptops', '1000.00', '20.00', 'img/fea1.jpg', 7),
+(2, 'Gaming Mouse', 'Mouses', '150.00', '15.00', 'img/fea2.jpg', 10),
+(3, 'DSLR Camera', 'Cameras', '700.00', '20.00', 'img/fea3.jpg', 5),
+(4, 'Desktop PC', 'Computers', '1200.00', '17.00', 'img/fea4.jpg', 10),
+(5, 'New Laptop', 'Laptops', '1200.00', '10.00', 'img/new1.jpg', 5),
+(6, 'Wireless Mouse', 'Mouses', '150.00', '5.00', 'img/new2.jpg', 8),
+(7, 'Mirrorless Camera', 'Cameras', '350.00', '15.00', 'img/new3.jpg', 3),
+(8, 'Gaming PC', 'Computers', '900.00', '10.00', 'img/new4.jpg', 6),
+(9, 'Ultrabook', 'Laptops', '100.00', '20.00', 'img/new5.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -204,7 +220,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

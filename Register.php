@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="main">
-    <a href="index.html" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
+    <a href="index.php" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
     <h1>Create Your Account</h1>
     <p class="subtitle">Sign up to get started</p>
     <p id="message" class="<?= $type === 'error' ? 'error-message' : ($type === 'success' ? 'success-message' : '') ?>">

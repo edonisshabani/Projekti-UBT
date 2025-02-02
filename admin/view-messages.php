@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../config.php';
 include('authentication.php');
 
@@ -23,6 +22,7 @@ $result = mysqli_query($con, $query);
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="view-users.php">Manage Users</a></li>
             <li><a href="view-messages.php" class="active">View Messages</a></li>
+            <li><a href="view-orders.php">View Orders</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>

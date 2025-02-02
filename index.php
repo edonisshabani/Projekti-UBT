@@ -12,10 +12,10 @@ include 'config.php';
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/707ec381ad.js" crossorigin="anonymous"></script>
     <style>
-        .user-icon {
-            position: relative;
-            display: inline-block;
-            padding-left: 30px;
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Spacing between icon and name */
         }
         .user-icon img {
             width: 35px;
@@ -23,10 +23,16 @@ include 'config.php';
             border-radius: 50%;
             cursor: pointer;
         }
+        .user-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+        }
         .dropdown-content {
             display: none;
             position: absolute;
-            right: 0;
+            right: 50;
             background-color: #f9f9f9;
             min-width: 120px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -50,26 +56,30 @@ include 'config.php';
 
     <!----Menu e Webit--->
     <header>
-        <a href="#" class="logo">EA10</a>
-        <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
-        <ul class="navlist">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#featured">Featured</a></li>
-            <li><a href="#new-arrivals">New</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <li class="user-icon">
+    <a href="#" class="logo">EA10</a>
+    <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="navlist">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#new-arrivals">New</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="user-section">
+                <div class="user-icon">
                     <img src="img/user-icon.png" alt="User Icon">
                     <div class="dropdown-content">
                         <a href="logout.php">Logout</a>
                     </div>
-                </li>
-            <?php else: ?>
-                <li><a href="login.php">LogIn</a></li>
-            <?php endif; ?>
-        </ul>
-    </header>
+                </div>
+                <span class="user-name"><?= htmlspecialchars($_SESSION['user_name']); ?></span>
+            </li>
+        <?php else: ?>
+            <li><a href="login.php">LogIn</a></li>
+        <?php endif; ?>
+    </ul>
+</header>
 
     <!----home-ballina--->
     <section class="home" id="home">

@@ -112,7 +112,7 @@ $result = mysqli_query($con, $query);
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="margin-top:100px;">
 <a href="index.php" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #007acc;">&#8592;</a>
     <h2>Your Shopping Cart</h2>
 

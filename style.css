@@ -10,7 +10,7 @@ body {
 
 /* Edonisi */
 header {
-    width: 85%;
+    width: 100%;
     top: 0;
     z-index: 1000;
     background-color: transparent;
@@ -35,6 +35,7 @@ header {
     display: flex;
     list-style: none;
     padding-right: 20px;
+    margin-right: 20%;
 }
 
 .navlist a {
@@ -230,7 +231,7 @@ section {
     background: #0e2630;
 }
 
-/* Style i shfaqjes se produkteve */
+//* Style i shfaqjes se produkteve */
 .center-text {
     text-align: center;
     margin-bottom: 30px;
@@ -355,6 +356,76 @@ section {
     background-color: #0056b3;
 }
 
+@media (max-width: 1200px) {
+    .product-card {
+        flex: 1 1 calc(30% - 20px); 
+    }
+
+    .center-text h2 {
+        font-size: 40px; 
+    }
+}
+
+@media (max-width: 992px) {
+    .product-card {
+        flex: 1 1 calc(45% - 20px); 
+    }
+
+    .center-text h2 {
+        font-size: 36px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 1 1 100%; 
+    }
+
+    .center-text h2 {
+        font-size: 28px; 
+    }
+
+    .product-details h5 {
+        font-size: 16px; 
+    }
+
+    .product-details p {
+        font-size: 12px; 
+    
+
+    .final-price {
+        font-size: 16px;
+    }
+
+    .add-to-cart,
+    .buy-now {
+        font-size: 12px; 
+        padding: 8px 12px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .center-text h2 {
+        font-size: 24px; 
+
+    .product-details h5 {
+        font-size: 14px; 
+    }
+
+    .product-details p {
+        font-size: 10px; 
+    }
+
+    .final-price {
+        font-size: 14px;
+    }
+
+    .add-to-cart,
+    .buy-now {
+        font-size: 10px; 
+        padding: 6px 10px;
+    }
+}
 /* Stilizimi i footerit*/
 .footer {
     background: linear-gradient(135deg, #000000, #303030);
@@ -1312,7 +1383,7 @@ section {
     color: black;
     font-size: 18px;
     position: absolute;
-     right: 20px;
+    margin-right: 10%;
 }
 
 .cart-count {
@@ -1323,5 +1394,67 @@ section {
     font-size: 14px;
     position: absolute;
     top: -10px;
-    right: -10px;
+    margin-right: 10%;
+}
+
+@media (max-width: 1200px) {
+    .featured-content {
+        padding: 10px;
+    }
+
+    .product-card {
+        flex: 1 1 calc(30% - 20px);
+    }
+}
+
+@media (max-width: 992px) {
+    .product-card {
+        flex: 1 1 calc(45% - 20px);
+    }
+
+    .home-text h1 {
+        font-size: 36px;
+    }
+
+    .home-text p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-text h1 {
+        font-size: 28px;
+    }
+
+    .home-text p {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navlist {
+        padding: 20px;
+    }
+
+    .navlist a {
+        font-size: 14px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-about,
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+        width: 100%;
+        margin: 10px 0;
+    }
 }

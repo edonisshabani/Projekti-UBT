@@ -1,7 +1,6 @@
 <?php
 include('../config.php');
 include('authentication.php');
-session_start();
 if (!isset($_SESSION["visits"])) {
     $_SESSION["visits"] = 1;
 } else {
@@ -83,6 +82,7 @@ if (isset($_POST['export_excel'])) {
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="view-users.php">Manage Users</a></li>
             <li><a href="view-messages.php">View Messages</a></li>
+            <li><a href="view-orders.php">View Orders</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>

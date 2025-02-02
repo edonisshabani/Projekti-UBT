@@ -19,11 +19,14 @@ body {
     left: 0;
     top: 0;
     transition: 0.3s;
+    box-sizing: border-box;
+    z-index: 1000;
 }
 
 .sidebar h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .sidebar ul {
@@ -55,15 +58,18 @@ body {
     padding: 20px;
     flex-grow: 1;
     width: calc(100% - 270px);
+    box-sizing: border-box;
 }
 
 .admin-container {
     background: white;
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 50px auto;
-    width: 80%;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .add-product-form {
@@ -79,11 +85,13 @@ form {
 
 form .form-group {
     margin-bottom: 20px;
+    text-align: left;
 }
 
 form .form-group label {
     font-weight: bold;
     margin-bottom: 10px;
+    display: block;
 }
 
 form .form-group input {
@@ -97,16 +105,17 @@ form .form-group input {
 
 form button {
     padding: 12px 20px;
-    background: rgb(0,123,255);
+    background: #007BFF;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 form button:hover {
-    background: rgb(0, 97, 201);
+    background: #0056b3;
 }
 
 table {
@@ -114,6 +123,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     border: 2px solid #007BFF;
+    box-sizing: border-box;
 }
 
 th, td {
@@ -137,10 +147,43 @@ tr:hover {
     padding: 5px 10px;
     text-decoration: none;
     border-radius: 5px;
+    transition: 0.3s;
 }
 
 .delete-btn:hover {
     background: darkred;
+}
+
+.view-btn, .back-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.view-btn:hover, .back-btn:hover {
+    background-color: #0056b3;
+}
+
+.export-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.export-btn:hover {
+    background-color: #0056b3;
 }
 
 @media (max-width: 1024px) {
@@ -290,18 +333,90 @@ tr:hover {
         font-size: 10px;
     }
 }
-.export-btn {
-    padding: 10px 20px;
-    background-color: rgb(0,123,255);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+
+@media (max-width: 768px) {
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .admin-container {
+        padding: 15px;
+    }
+
+    form .form-group input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    form button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }
 
-.export-btn:hover {
-    background-color: rgb(0, 97, 201);
+@media (max-width: 480px) {
+    .sidebar ul li a {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .admin-container {
+        padding: 10px;
+    }
+
+    form .form-group input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    form button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .sidebar ul li a {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
+    }
+
+    .main-content {
+        padding: 8px;
+    }
+
+    .admin-container {
+        padding: 8px;
+    }
+
+    form .form-group input {
+        padding: 6px;
+        font-size: 10px;
+    }
+
+    form button {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
 }

@@ -104,4 +104,19 @@ window.onload = function () {
         }, 3000);
     }
 };
+function addToCart(productId) {
+    fetch("add_to_cart.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "product_id=" + productId
+    })
+    .then(response => response.text())
+    .then(cartCount => {
+        if (!isNaN(cartCount) && cartCount > 0) {
+            document.getElementById("cart-count").innerText = cartCount;
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
 

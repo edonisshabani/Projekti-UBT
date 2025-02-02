@@ -1,6 +1,16 @@
 <?php
 session_start();
 include 'config.php';
+
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+
+$cart_count = 0;
+if ($user_id) {
+    $cart_query = "SELECT SUM(quantity) AS total_items FROM cart WHERE user_id = $user_id";
+    $cart_result = mysqli_query($con, $cart_query);
+    $cart_row = mysqli_fetch_assoc($cart_result);
+    $cart_count = $cart_row['total_items'] ? $cart_row['total_items'] : 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,30 +26,37 @@ include 'config.php';
 
         <!----Menu e Webit--->
         <header>
-        <a href="#" class="logo">EA10</a>
-        <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
-        <ul class="navlist">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#featured">Featured</a></li>
-            <li><a href="#new-arrivals">New</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="aboutus.php">About Us</a></li>
+    <a href="#" class="logo">EA10</a>
+    <button class="mob-menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="navlist">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#new-arrivals">New</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="aboutus.php">About Us</a></li>
 
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <li class="user-section">
-                    <div class="user-icon">
-                        <img src="img/user-icon.png" alt="User Icon">
-                        <div class="dropdown-content">
-                            <a href="logout.php">Logout</a>
-                        </div>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="user-section">
+                <div class="user-icon">
+                    <img src="img/user-icon.png" alt="User Icon">
+                    <div class="dropdown-content">
+                        <a href="logout.php">Logout</a>
                     </div>
-                    <span class="user-name" ><?= htmlspecialchars($_SESSION['user_name']); ?></span>
-                </li>
-            <?php else: ?>
-                <li><a href="login.php">LogIn</a></li>
-            <?php endif; ?>
-        </ul>
-    </header>
+                </div>
+                <span class="user-name"><?= htmlspecialchars($_SESSION['user_name']); ?></span>
+            </li>
+            <li>
+                <a href="cart.php" class="cart-icon">
+                    🛒 Cart 
+                    <span id="cart-count" class="cart-count"><?= $cart_count; ?></span>
+                </a>
+            </li>
+        <?php else: ?>
+            <li><a href="login.php">LogIn</a></li>
+        <?php endif; ?>
+    </ul>
+</header>
+
 
     <!----home-ballina--->
     <section class="home" id="home">
@@ -52,72 +69,70 @@ include 'config.php';
 
     <!-- Shfaqja e Produkteve -->
     <section class="featured" id="featured">
-        <div class="center-text">
-            <h2>Categories</h2>
-        </div>
+    <div class="center-text">
+        <h2>Categories</h2>
+    </div>
 
-        <div class="featured-content">
-        <?php
-            $sql = "SELECT * FROM products LIMIT 4";
-            $result = $con->query($sql);
+    <div class="featured-content">
+    <?php
+        $sql = "SELECT * FROM products LIMIT 4";
+        $result = $con->query($sql);
 
-            while ($row = $result->fetch_assoc()):
-                $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
-            ?>
-            <div class="product-card" onclick="openProductPage('product.php?id=<?= $row['id']; ?>')">
-                <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
-                <div class="product-details">
-                    <h5><?= $row['name']; ?></h5>
-                    <p><?= $row['quantity']; ?> items</p>
-                    <div class="price-container">
-                        <span class="original-price">$<?= $row['price']; ?></span>
-                        <span class="discount">-<?= $row['discount']; ?>%</span>
-                        <span class="final-price">$<?= $final_price; ?></span>
-                    </div>
-                    <div class="button-container">
-                        <form action="add_to_cart.php" method="POST">
-                            <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="add-to-cart">Add to Cart <i class="fa-solid fa-cart-shopping"></i></button>
-                        </form>
-                        <button class="buy-now" onclick="window.location.href='checkout.php?product_id=<?= $row['id']; ?>'">Buy Now</button>
-
-                    </div>
-                </div>
+        while ($row = $result->fetch_assoc()):
+            $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
+    ?>
+    <div class="product-card">
+        <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
+        <div class="product-details">
+            <h5><?= $row['name']; ?></h5>
+            <p><?= $row['quantity']; ?> items</p>
+            <div class="price-container">
+                <span class="original-price">$<?= $row['price']; ?></span>
+                <span class="discount">-<?= $row['discount']; ?>%</span>
+                <span class="final-price">$<?= $final_price; ?></span>
             </div>
-            <?php endwhile; ?>
-        </div>
-        <div class="featured-content">
-        <?php
-            $sql = "SELECT * FROM products LIMIT 4";
-            $result = $con->query($sql);
-
-            while ($row = $result->fetch_assoc()):
-                $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
-            ?>
-            <div class="product-card" onclick="openProductPage('product.php?id=<?= $row['id']; ?>')">
-                <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
-                <div class="product-details">
-                    <h5><?= $row['name']; ?></h5>
-                    <p><?= $row['quantity']; ?> items</p>
-                    <div class="price-container">
-                        <span class="original-price">$<?= $row['price']; ?></span>
-                        <span class="discount">-<?= $row['discount']; ?>%</span>
-                        <span class="final-price">$<?= $final_price; ?></span>
-                    </div>
-                    <div class="button-container">
-                        <form action="add_to_cart.php" method="POST">
-                            <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="add-to-cart">Add to Cart <i class="fa-solid fa-cart-shopping"></i></button>
-                        </form>
-                        <button class="buy-now">Buy Now</button>
-                    </div>
-                </div>
+            <div class="button-container">
+                <button onclick="addToCart(<?= $row['id']; ?>)" class="add-to-cart">
+                    Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                <button class="buy-now" onclick="window.location.href='checkout.php?product_id=<?= $row['id']; ?>'">Buy Now</button>
             </div>
-            <?php endwhile; ?>
         </div>
-    </section>
+    </div>
+    <?php endwhile; ?>
+    </div>
+
+    <div class="na-c">
+    <?php
+        $sql = "SELECT * FROM products LIMIT 4";
+        $result = $con->query($sql);
+
+        while ($row = $result->fetch_assoc()):
+            $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
+    ?>
+    <div class="product-card">
+        <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
+        <div class="product-details">
+            <h5><?= $row['name']; ?></h5>
+            <p><?= $row['quantity']; ?> items</p>
+            <div class="price-container">
+                <span class="original-price">$<?= $row['price']; ?></span>
+                <span class="discount">-<?= $row['discount']; ?>%</span>
+                <span class="final-price">$<?= $final_price; ?></span>
+            </div>
+            <div class="button-container">
+                <button onclick="addToCart(<?= $row['id']; ?>)" class="add-to-cart">
+                    Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    <?php endwhile; ?>
+    </div>
+</section>
+
+
 
     <div class="ad-container">
         <img src="img/ad1.png" alt="Ad 1" class="ad-image">
@@ -125,41 +140,39 @@ include 'config.php';
     </div>
 
     <section class="na" id="new-arrivals">
-        <div class="ct">
-            <h2>New Arrivals</h2>
-        </div>
+    <div class="ct">
+        <h2>New Arrivals</h2>
+    </div>
 
-        <div class="na-c">
-        <?php
-            $sql = "SELECT * FROM products LIMIT 4";
-            $result = $con->query($sql);
+    <div class="na-c">
+    <?php
+        $sql = "SELECT * FROM products LIMIT 4";
+        $result = $con->query($sql);
 
-            while ($row = $result->fetch_assoc()):
-                $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
-            ?>
-            <div class="product-card" onclick="openProductPage('product.php?id=<?= $row['id']; ?>')">
-                <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
-                <div class="product-details">
-                    <h5><?= $row['name']; ?></h5>
-                    <p><?= $row['quantity']; ?> items</p>
-                    <div class="price-container">
-                        <span class="original-price">$<?= $row['price']; ?></span>
-                        <span class="discount">-<?= $row['discount']; ?>%</span>
-                        <span class="final-price">$<?= $final_price; ?></span>
-                    </div>
-                    <div class="button-container">
-                        <form action="add_to_cart.php" method="POST">
-                            <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="add-to-cart">Add to Cart <i class="fa-solid fa-cart-shopping"></i></button>
-                        </form>
-                        <button class="buy-now">Buy Now</button>
-                    </div>
-                </div>
+        while ($row = $result->fetch_assoc()):
+            $final_price = $row['price'] - ($row['price'] * ($row['discount'] / 100));
+    ?>
+    <div class="product-card">
+        <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
+        <div class="product-details">
+            <h5><?= $row['name']; ?></h5>
+            <p><?= $row['quantity']; ?> items</p>
+            <div class="price-container">
+                <span class="original-price">$<?= $row['price']; ?></span>
+                <span class="discount">-<?= $row['discount']; ?>%</span>
+                <span class="final-price">$<?= $final_price; ?></span>
             </div>
-            <?php endwhile; ?>
+            <div class="button-container">
+                <button onclick="addToCart(<?= $row['id']; ?>)" class="add-to-cart">
+                    Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                <button class="buy-now">Buy Now</button>
+            </div>
         </div>
-    </section>
+    </div>
+    <?php endwhile; ?>
+    </div>
+</section>
 
     <section class="image-slider">
         <div class="slider-container">
